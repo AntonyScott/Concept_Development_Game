@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] ghosts; //ghosts are set as an array
+    public Ghosts[] ghosts; //ghosts are set as an array
 
     public GameObject[] androids;
 
-    public GameObject pacman; //pacman declared as public game object
+    public Player pacman; //pacman declared as public game object
 
     public Transform pellets; //pellets declared as public transform
 
-    public int score { get; private set; } 
-
+    public int score { get; private set; }
+    public int ghostMultiplier { get; private set; } = 1;
     public int lives { get; private set; }
 
     private void Start()
@@ -46,11 +46,13 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
+        ResetGhostMultiplier();
         for (int i = 0; i < this.ghosts.Length; i++) //counts how many ghosts are present in level
         {
-            this.ghosts[i].gameObject.SetActive(true); //turns on ghosts gameobject
+            this.ghosts[i].ResetState(); //turns on ghosts gameobject
+            //this.ghosts[i].ResetState();
         }
-        this.pacman.gameObject.SetActive(true); //turns on pacman gameobject
+        this.pacman.ResetState(); //turns on pacman gameobject
     }
     private void GameOver()
     {
@@ -70,16 +72,18 @@ public class GameManager : MonoBehaviour
         this.lives = lives;
     }
 
-    public void DestroyedGhost(Ghosts ghost) 
+    public void DestroyedGhost(Ghosts enemy) 
     {
-        SetScore(this.score + ghost.points); //when ghosts are destroyed, points are added to overall score
+        int points = enemy.points * this.ghostMultiplier;
+        SetScore(this.score + points);
+        this.ghostMultiplier++;
     }
 
     public void DestroyedPacMan()
     {
         this.pacman.gameObject.SetActive(false); //turns off pacman gameobject
 
-        SetLives(this.lives = -1); //a life is deducted 
+        SetLives(this.lives - 1); //a life is deducted 
 
         if(this.lives > 0) //if lives are greater than 0...
         {
@@ -89,5 +93,47 @@ public class GameManager : MonoBehaviour
         {
             GameOver(); //otherwise the game ends and gameover is called
         }
+    }
+    public void PelletEaten(Pellets pellet)
+    {
+        pellet.gameObject.SetActive(false);
+        SetScore(this.score + pellet.points);
+
+        if (!RemainingPellets())
+        {
+            this.pacman.gameObject.SetActive(false);
+            Invoke(nameof(NewRound), 3.0f);
+        }
+    }
+
+    public void PowerPelletEaten(PowerPellet powerPellet)
+    {
+        // change ghost state
+        for (int i = 0; i < this.ghosts.Length; i++)
+        {
+            this.ghosts[i].frightened.Enable(powerPellet.duration);
+        }
+
+        PelletEaten(powerPellet);
+        CancelInvoke();
+        Invoke(nameof(ResetGhostMultiplier), powerPellet.duration);
+        
+    }
+
+    private bool RemainingPellets()
+    {
+        foreach(Transform pellets in this.pellets)
+        {
+            if (pellets.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void ResetGhostMultiplier()
+    {
+        this.ghostMultiplier = 1;
     }
 }

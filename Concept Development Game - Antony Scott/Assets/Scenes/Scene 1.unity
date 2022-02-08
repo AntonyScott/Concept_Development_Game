@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 254741476}
     - target: {fileID: 4132029947300192099, guid: 7145bb2685cf8204e9564a6d89c76db5, type: 3}
       propertyPath: m_Name
-      value: Robot 3
+      value: Android 3
       objectReference: {fileID: 0}
     - target: {fileID: 4132029947300192126, guid: 7145bb2685cf8204e9564a6d89c76db5, type: 3}
       propertyPath: m_RootOrder
@@ -9823,7 +9823,7 @@ PrefabInstance:
       objectReference: {fileID: 254741476}
     - target: {fileID: 8201386505882630157, guid: ea283af6cb45d3e4aa3b7dbfcfa326bc, type: 3}
       propertyPath: m_Name
-      value: Robot 4
+      value: Android 4
       objectReference: {fileID: 0}
     - target: {fileID: 8201386505882630160, guid: ea283af6cb45d3e4aa3b7dbfcfa326bc, type: 3}
       propertyPath: m_RootOrder
@@ -10998,7 +10998,7 @@ PrefabInstance:
       objectReference: {fileID: 254741476}
     - target: {fileID: 6794621282708575835, guid: b4c94e727d5071448983efecf4cab73c, type: 3}
       propertyPath: m_Name
-      value: Robot 1
+      value: Android 1
       objectReference: {fileID: 0}
     - target: {fileID: 7095905586587716752, guid: b4c94e727d5071448983efecf4cab73c, type: 3}
       propertyPath: m_LocalScale.x
@@ -11019,7 +11019,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 934188314482355816, guid: cededa1c3252fd343a26ac19b0a7d303, type: 3}
       propertyPath: m_Name
-      value: Robot 2
+      value: Android 2
       objectReference: {fileID: 0}
     - target: {fileID: 934188314482355817, guid: cededa1c3252fd343a26ac19b0a7d303, type: 3}
       propertyPath: target

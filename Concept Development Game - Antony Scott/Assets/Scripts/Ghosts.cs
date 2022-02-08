@@ -8,6 +8,7 @@ public class Ghosts : MonoBehaviour
     public EnemyHome home { get; private set; }
     public EnemyScatter scatter { get; private set; }
     public EnemyChase chase { get; private set; }
+    public EnemyIncreasedSpeed increasedSpeed { get; private set; }
     public EnemyFrightened frightened { get; private set; }
 
     public EnemyBehaviour initialBehaviour;
@@ -22,6 +23,7 @@ public class Ghosts : MonoBehaviour
         this.home = GetComponent<EnemyHome>();
         this.scatter = GetComponent<EnemyScatter>();
         this.chase = GetComponent<EnemyChase>();
+        this.increasedSpeed = GetComponent<EnemyIncreasedSpeed>();
         this.frightened = GetComponent<EnemyFrightened>();
     }
     private void Start()

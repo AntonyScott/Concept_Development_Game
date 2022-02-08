@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChase : EnemyBehaviour
+public class EnemyIncreasedSpeed : EnemyBehaviour
 {
     private void OnDisable()
     {
-        this.enemy.increasedSpeed.Enable(); //when this script disables, it enables the scatter script
+        this.enemy.scatter.Enable(); //when this script disables, it enables the scatter script
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        this.enemy.movement.IncreaseSpeed();
         Node node = other.GetComponent<Node>(); //node is declared as a node component
 
         if (node != null && this.enabled && !this.enemy.frightened.enabled)
@@ -18,12 +19,12 @@ public class EnemyChase : EnemyBehaviour
             Vector2 direction = Vector2.zero;
             float minimumDistance = float.MaxValue;
 
-            foreach(Vector2 availableDirection in node.availableDirections)
+            foreach (Vector2 availableDirection in node.availableDirections)
             {
                 Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y, 0.0f);
                 float distance = (this.enemy.target.position - newPosition).sqrMagnitude;
 
-                if(distance < minimumDistance)
+                if (distance < minimumDistance)
                 {
                     direction = availableDirection;
                     minimumDistance = distance;

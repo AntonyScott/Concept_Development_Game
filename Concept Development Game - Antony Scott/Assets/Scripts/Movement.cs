@@ -75,4 +75,8 @@ public class Movement : MonoBehaviour
         return hit.collider != null;
     }
 
+    public void IncreaseSpeed()
+    {
+        speedMultiplier = 1.5f;
+    }
 }

@@ -86,27 +86,30 @@ public class EnemyFrightened : EnemyBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Node node = other.GetComponent<Node>(); //node is declared as a node component
+        Node node = other.GetComponent<Node>();
 
         if (node != null && this.enabled)
         {
             Vector2 direction = Vector2.zero;
-            float maximumDistance = float.MinValue;
+            float maxDistance = float.MinValue;
 
+            // Find the available direction that moves farthest from pacman
             foreach (Vector2 availableDirection in node.availableDirections)
             {
-                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y, 0.0f);
+                // If the distance in this direction is greater than the current
+                // max distance then this direction becomes the new farthest
+                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y);
                 float distance = (this.enemy.target.position - newPosition).sqrMagnitude;
 
-                if (distance < maximumDistance)
+                if (distance > maxDistance)
                 {
                     direction = availableDirection;
-                    maximumDistance = distance;
+                    maxDistance = distance;
                 }
             }
 
             this.enemy.movement.SetDirection(direction);
         }
-
     }
+
 }

@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pinky
       objectReference: {fileID: 0}
+    - target: {fileID: 4132029947300192099, guid: 7145bb2685cf8204e9564a6d89c76db5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4132029947300192126, guid: 7145bb2685cf8204e9564a6d89c76db5, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7872,16 +7876,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 0
       dummyAlignment: 0
       m_AllTileFlags: 2
-  - first: {x: -7, y: -5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 2
   - first: {x: -5, y: -5, z: 0}
     second:
       serializedVersion: 2
@@ -7913,16 +7907,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 2
   - first: {x: -8, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 2
-  - first: {x: -7, y: -4, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -8533,26 +8517,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 2
   - first: {x: -2, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 2
-  - first: {x: -1, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 2
-  - first: {x: 0, y: 3, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -9252,16 +9216,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 0
       dummyAlignment: 0
       m_AllTileFlags: 2
-  - first: {x: 8, y: 9, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 0
-      dummyAlignment: 0
-      m_AllTileFlags: 2
   - first: {x: 12, y: 9, z: 0}
     second:
       serializedVersion: 2
@@ -9634,13 +9588,13 @@ Tilemap:
       m_AllTileFlags: 2
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 285
+  - m_RefCount: 280
     m_Data: {fileID: 11400000, guid: 6ed48a654763e1b4d8630cd09607453e, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 77341e455e88e0d4d87b72796a6d3ea9, type: 2}
   m_TileSpriteArray: []
   m_TileMatrixArray:
-  - m_RefCount: 289
+  - m_RefCount: 284
     m_Data:
       e00: 1
       e01: 0
@@ -9659,10 +9613,10 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 289
+  - m_RefCount: 284
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray:
-  - m_RefCount: 285
+  - m_RefCount: 280
     m_Data: {fileID: 6389867686165854976, guid: e9694838eb2835649839d694247fe4fe, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 3735124598062726842, guid: 8ceb8eeed5055a3458147f29e4b874ff, type: 3}
@@ -9794,6 +9748,10 @@ PrefabInstance:
     - target: {fileID: 8201386505882630157, guid: ea283af6cb45d3e4aa3b7dbfcfa326bc, type: 3}
       propertyPath: m_Name
       value: Clyde
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201386505882630157, guid: ea283af6cb45d3e4aa3b7dbfcfa326bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8201386505882630160, guid: ea283af6cb45d3e4aa3b7dbfcfa326bc, type: 3}
       propertyPath: m_RootOrder
@@ -10926,6 +10884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blinky
       objectReference: {fileID: 0}
+    - target: {fileID: 6794621282708575835, guid: b4c94e727d5071448983efecf4cab73c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c94e727d5071448983efecf4cab73c, type: 3}
 --- !u!1001 &7362394419849986381
@@ -10938,6 +10900,10 @@ PrefabInstance:
     - target: {fileID: 934188314482355816, guid: cededa1c3252fd343a26ac19b0a7d303, type: 3}
       propertyPath: m_Name
       value: Inky
+      objectReference: {fileID: 0}
+    - target: {fileID: 934188314482355816, guid: cededa1c3252fd343a26ac19b0a7d303, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934188314482355817, guid: cededa1c3252fd343a26ac19b0a7d303, type: 3}
       propertyPath: target

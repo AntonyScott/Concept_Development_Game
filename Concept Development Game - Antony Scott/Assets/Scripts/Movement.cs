@@ -1,31 +1,34 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))] //requires rigidbody component to be attached to gameobject
 public class Movement : MonoBehaviour
 {
+    //variables declared
     public float speed = 8.0f;
     public float speedMultiplier = 1.0f;
     public Vector2 initialDirection;
     public LayerMask obstacleLayer;
 
-    public Rigidbody2D rb { get; private set; }
-    public Vector2 direction { get; private set; }
-    public Vector2 nextDirection { get; private set; }
-    public Vector3 startingPosition { get; private set; }
+    public Rigidbody2D rb;
+    public Vector2 direction;
+    public Vector2 nextDirection;
+    public Vector3 startingPosition;
 
     private void Awake()
     {
-        this.rb = GetComponent<Rigidbody2D>();
-        this.startingPosition = this.transform.position;
+        this.rb = GetComponent<Rigidbody2D>(); //rb is assigned a rigidbody component
+        this.startingPosition = this.transform.position; //starting position is current position of gameobject
     }
 
     private void Start()
     {
-        ResetState();
+        ResetState(); //reset state called on start
     }
 
     public void ResetState()
     {
+        //reset to their default values
         this.speedMultiplier = 1.0f;
         this.direction = this.initialDirection;
         this.nextDirection = Vector2.zero;
@@ -36,35 +39,30 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        // Try to move in the next direction while it's queued to make movements
-        // more responsive
-        if (this.nextDirection != Vector2.zero)
+        if (nextDirection != Vector2.zero) //if next direction is not (0,0)
         {
-            SetDirection(this.nextDirection);
+            SetDirection(nextDirection);
         }
     }
 
     private void FixedUpdate()
     {
-        Vector2 position = this.rb.position;
-        Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
+        Vector2 position = rb.position; //set to rigidbody position
+        Vector2 translation = direction * speed * speedMultiplier * Time.fixedDeltaTime;
 
-        this.rb.MovePosition(position + translation);
+        rb.MovePosition(position + translation);
     }
 
     public void SetDirection(Vector2 direction, bool forced = false)
     {
-        // Only set the direction if the tile in that direction is available
-        // otherwise we set it as the next direction so it'll automatically be
-        // set when it does become available
         if (forced || !Occupied(direction))
         {
             this.direction = direction;
-            this.nextDirection = Vector2.zero;
+            nextDirection = Vector2.zero;
         }
         else
         {
-            this.nextDirection = direction;
+            nextDirection = direction;
         }
     }
 
@@ -75,8 +73,9 @@ public class Movement : MonoBehaviour
         return hit.collider != null;
     }
 
-    public void IncreaseSpeed()
+    public void IncreaseSpeed() //increases speedMultiplier
     {
         speedMultiplier = 1.5f;
     }
+
 }

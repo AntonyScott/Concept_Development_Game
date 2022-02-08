@@ -94,16 +94,16 @@ public class EnemyFrightened : EnemyBehaviour
             float maxDistance = float.MinValue;
 
             // Find the available direction that moves farthest from pacman
-            foreach (Vector2 availableDirection in node.availableDirections)
+            foreach (Vector2 possibleDirection in node.possibleDirections)
             {
                 // If the distance in this direction is greater than the current
                 // max distance then this direction becomes the new farthest
-                Vector3 newPosition = this.transform.position + new Vector3(availableDirection.x, availableDirection.y);
+                Vector3 newPosition = this.transform.position + new Vector3(possibleDirection.x, possibleDirection.y);
                 float distance = (this.enemy.target.position - newPosition).sqrMagnitude;
 
                 if (distance > maxDistance)
                 {
-                    direction = availableDirection;
+                    direction = possibleDirection;
                     maxDistance = distance;
                 }
             }

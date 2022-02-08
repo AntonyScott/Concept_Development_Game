@@ -8,14 +8,14 @@ public class Pellets : MonoBehaviour
 
     protected virtual void Eat()
     {
-        FindObjectOfType<GameManager>().PelletEaten(this);
+        FindObjectOfType<GameManager>().PelletEaten(this); //calls pelletEaten function from GameManager
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Pacman")) //if pacman collides with pellet
         {
-            Eat();
+            Eat(); //eat is called
         }
     }
 

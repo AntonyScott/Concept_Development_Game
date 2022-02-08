@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Ghosts : MonoBehaviour
 {
-    public Movement movement { get; private set; }
-    public EnemyHome home { get; private set; }
-    public EnemyScatter scatter { get; private set; }
-    public EnemyChase chase { get; private set; }
-    public EnemyIncreasedSpeed increasedSpeed { get; private set; }
-    public EnemyFrightened frightened { get; private set; }
+    //variables are declared
+    public Movement movement;
+    public EnemyHome home;
+    public EnemyScatter scatter;
+    public EnemyChase chase;
+    public EnemyIncreasedSpeed increasedSpeed;
+    public EnemyFrightened frightened;
 
     public EnemyBehaviour initialBehaviour;
     public Transform target;
@@ -18,7 +19,7 @@ public class Ghosts : MonoBehaviour
 
     private void Awake()
     {
-        //references for all variables
+        //component references for all variables
         this.movement = GetComponent<Movement>();
         this.home = GetComponent<EnemyHome>();
         this.scatter = GetComponent<EnemyScatter>();
@@ -28,38 +29,38 @@ public class Ghosts : MonoBehaviour
     }
     private void Start()
     {
-        ResetState();
+        ResetState(); //reset state is called every time the game opens
     }
     public void ResetState()
     {
-        this.gameObject.SetActive(true);
-        this.movement.ResetState();
+        this.gameObject.SetActive(true); //enemy game objects set to true
+        this.movement.ResetState(); //enemy movement resets
 
-        this.frightened.Disable(); //never start frightened
-        this.chase.Disable(); //never start chasing
-        this.scatter.Enable(); //will start scattering
+        this.frightened.Disable(); //enemies never start frightened
+        this.chase.Disable(); //enemies never start chasing
+        this.scatter.Enable(); //enemies will start scattering
         
-        if(this.home != this.initialBehaviour)
+        if(this.home != this.initialBehaviour) //if home is not enemy initial behaviour...
         {
-            this.home.Disable();
+            this.home.Disable(); //then it is disabled
         }
 
-        if(this.initialBehaviour != null)
+        if(this.initialBehaviour != null) //if initial behaviour is not null
         {
-            this.initialBehaviour.Enable();
+            this.initialBehaviour.Enable(); //it is enabled
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Pacman")) //if enemy collides with pacman
         {
-            if (this.frightened.enabled)
+            if (this.frightened.enabled) //and is frightened
             {
-                FindObjectOfType<GameManager>().DestroyedGhost(this);
+                FindObjectOfType<GameManager>().DestroyedEnemy(this); //enemy is destroyed
             }
             else
             {
-                FindObjectOfType<GameManager>().DestroyedPacMan();
+                FindObjectOfType<GameManager>().DestroyedPacMan(); //otherwise pacman is killed
             }
         }
     }

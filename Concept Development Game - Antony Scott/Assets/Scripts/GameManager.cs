@@ -6,15 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public Ghosts[] ghosts; //ghosts are set as an array
 
-    public GameObject[] androids;
-
     public Player pacman; //pacman declared as public game object
 
     public Transform pellets; //pellets declared as public transform
 
-    public int score { get; private set; }
-    public int ghostMultiplier { get; private set; } = 1;
-    public int lives { get; private set; }
+    public int score;
+    public int enemyMultiplier = 1;
+    public int lives;
 
     private void Start()
     {
@@ -22,9 +20,14 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (this.lives <= 0 && Input.GetKeyDown(KeyCode.Space))
+        if (this.lives <= 0 && Input.GetKeyDown(KeyCode.Space)) //if lives are equal to or greater than 0 and player presses space
         {
-            NewGame();
+            NewGame(); //new game is called which resets score and level
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) //if escape is pressed
+        {
+            Debug.Log("Quit!");
+            Application.Quit(); //the game quits to desktop
         }
     }
 
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
-        ResetGhostMultiplier();
+        ResetEnemyMultiplier();
         for (int i = 0; i < this.ghosts.Length; i++) //counts how many ghosts are present in level
         {
             this.ghosts[i].ResetState(); //turns on ghosts gameobject
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < this.ghosts.Length; i++)
         {
-            this.ghosts[i].gameObject.SetActive(false); //deactivates all ghosts gameobjects present in level
+            this.ghosts[i].gameObject.SetActive(false); //deactivates all enemy gameobjects present in level
         }
         this.pacman.gameObject.SetActive(false); //turns off pacman gameobject in level
     }
@@ -72,11 +75,11 @@ public class GameManager : MonoBehaviour
         this.lives = lives;
     }
 
-    public void DestroyedGhost(Ghosts enemy) 
+    public void DestroyedEnemy(Ghosts enemy) 
     {
-        int points = enemy.points * this.ghostMultiplier;
+        int points = enemy.points * this.enemyMultiplier;
         SetScore(this.score + points);
-        this.ghostMultiplier++;
+        this.enemyMultiplier++;
     }
 
     public void DestroyedPacMan()
@@ -96,27 +99,27 @@ public class GameManager : MonoBehaviour
     }
     public void PelletEaten(Pellets pellet)
     {
-        pellet.gameObject.SetActive(false);
-        SetScore(this.score + pellet.points);
+        pellet.gameObject.SetActive(false); //pellets are deactivated when they collide with pacman
+        SetScore(this.score + pellet.points); //score increased for each pellet eaten
 
-        if (!RemainingPellets())
+        if (!RemainingPellets()) //if no pellets remain
         {
-            this.pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3.0f);
+            this.pacman.gameObject.SetActive(false); //pacman is deactivated
+            Invoke(nameof(NewRound), 3.0f); //new round begins after 3 seconds
         }
     }
 
     public void PowerPelletEaten(PowerPellet powerPellet)
     {
-        // change ghost state
+        // change enemy state
         for (int i = 0; i < this.ghosts.Length; i++)
         {
-            this.ghosts[i].frightened.Enable(powerPellet.duration);
+            this.ghosts[i].frightened.Enable(powerPellet.duration); //if power pellet is eaten then enemies become frightened
         }
 
-        PelletEaten(powerPellet);
-        CancelInvoke();
-        Invoke(nameof(ResetGhostMultiplier), powerPellet.duration);
+        PelletEaten(powerPellet); //powerpellet added to score
+        CancelInvoke(); //all invokes are cancelled
+        Invoke(nameof(ResetEnemyMultiplier), powerPellet.duration); //invokes score multiplier for every enemy eaten during power pellet duration
         
     }
 
@@ -132,8 +135,8 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    private void ResetGhostMultiplier()
+    private void ResetEnemyMultiplier()
     {
-        this.ghostMultiplier = 1;
+        this.enemyMultiplier = 1; //enemy multiplier is reset to 1
     }
 }

@@ -3,47 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer))] //requires a gameobject with sprite renderer for script to be attached
 public class SpriteAnimation : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer { get; private set; }
-    public Sprite[] sprites;
+    public Sprite[] sprites; //array of sprites
+    public SpriteRenderer spriteRenderer; //spriterenderer var
 
-    public float animTime = 0.25f;
-    public int animFrame { get; private set; }
-    public bool loop = true;
+    public float animationTime = 0.25f; //anim time is quarter of a second
+    public int animationFrame;
+    public bool loop = true; //anims are looping
 
     private void Awake()
     {
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>(); //sprite renderer is assigned sprite renderer component
     }
 
     private void Start()
     {
-        InvokeRepeating(nameof(Advance), this.animTime, this.animTime);
+        InvokeRepeating(nameof(Advance), this.animationTime, this.animationTime); //advance is repeated by at animtime then by every animtime afterwards
     }
 
     private void Advance()
     {
-        if (!this.spriteRenderer.enabled)
+        if (!this.spriteRenderer.enabled) //if sprite render not enabled
         {
             return;
         }
 
-        this.animFrame++;
-        if (this.animFrame >= this.sprites.Length && this.loop)
+        this.animationFrame++; //increment anim time
+        if (this.animationFrame >= this.sprites.Length && this.loop) //if anim frame is greater than sprite length and loop
         {
-            this.animFrame = 0;
+            this.animationFrame = 0; //anim frame resets
         }
-        if(this.animFrame >= 0 && this.animFrame < this.sprites.Length)
+        if(this.animationFrame >= 0 && this.animationFrame < this.sprites.Length) //if frame time equal to or greater than 0 and anim frame is less than sprite length
         {
-            this.spriteRenderer.sprite = this.sprites[this.animFrame];
+            this.spriteRenderer.sprite = this.sprites[this.animationFrame];
         }
     }
 
     public void Restart()
     {
-        this.animFrame = -1;
-        Advance();
+        this.animationFrame = -1; //anim frame is -1
+        Advance(); //advance is called
     }
 }

@@ -92,6 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129578e8dc81b2b48a2e5a9670508a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  home: {fileID: 0}
+  scatter: {fileID: 0}
+  chase: {fileID: 0}
+  increasedSpeed: {fileID: 0}
+  frightened: {fileID: 0}
   initialBehaviour: {fileID: 0}
   target: {fileID: 0}
   points: 200
@@ -153,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8cb5b830030654fa603a6fedf83c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 20
 --- !u!114 &7917691609750904779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8c02aeb0ec57b4ba18b4cf515e0e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 8
 --- !u!114 &570733909369023703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,12 +369,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 2867015756842785762, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
   - {fileID: 7468985002373224686, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
   animTime: 0.25
+  animFrame: 0
   loop: 1
 --- !u!1 &5049675631974613798
 GameObject:
@@ -466,10 +474,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 920572324899624016, guid: a89abea1783dc6b4cbcdeaefdbff0725, type: 3}
   - {fileID: 877657050626085837, guid: a89abea1783dc6b4cbcdeaefdbff0725, type: 3}
   animTime: 0.25
+  animFrame: 0
   loop: 1
 --- !u!1 &8122254268925742513
 GameObject:
@@ -567,8 +577,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   animTime: 0.25
+  animFrame: 0
   loop: 1

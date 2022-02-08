@@ -61,28 +61,100 @@ PrefabInstance:
       objectReference: {fileID: 7005996731186724627}
     - target: {fileID: 325873071898132861, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: m_Name
-      value: Clyde
+      value: Robot 4
       objectReference: {fileID: 0}
     - target: {fileID: 990010985451739420, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5320464465779939770, guid: 29386a4730a2ed74393f4eec4cddd777, type: 3}
+    - target: {fileID: 990010985451739420, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: m_Color.b
-      value: 0.33333334
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 990010985451739420, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: m_Color.g
-      value: 0.73333335
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 990010985451739420, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: m_Color.r
-      value: 0.972549
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1039645438769444781, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7391304e6dcdc594484288107bfd217f, type: 3}
+      objectReference: {fileID: 7041988465266921877, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
+    - target: {fileID: 1110610835088539506, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
     - target: {fileID: 1472354570320791139, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: duration
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 1677955142820271931, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
+    - target: {fileID: 1677955142820271931, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
+    - target: {fileID: 3316251532979953514, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 5320464465779939770, guid: 29386a4730a2ed74393f4eec4cddd777, type: 3}
+    - target: {fileID: 3316251532979953514, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 2987065167372571317, guid: 29386a4730a2ed74393f4eec4cddd777, type: 3}
+    - target: {fileID: 4086835597815618486, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086835597815618486, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188186630164120084, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
+    - target: {fileID: 5188186630164120084, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
+    - target: {fileID: 5188186630164120084, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 2867015756842785762, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
+    - target: {fileID: 5188186630164120084, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 7468985002373224686, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
+    - target: {fileID: 5544678136696183844, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544678136696183844, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729205623006939837, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729205623006939837, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729205623006939837, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.499
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236655533935576871, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2867015756842785762, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
     - target: {fileID: 8572436230860494974, guid: 8a7e73760811b9742b7b5c48a96d1f98, type: 3}
       propertyPath: initialDirection.y
       value: 1

@@ -17,8 +17,8 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-        this.rb = GetComponent<Rigidbody2D>(); //rb is assigned a rigidbody component
-        this.startingPosition = this.transform.position; //starting position is current position of gameobject
+        rb = GetComponent<Rigidbody2D>(); //rb is assigned a rigidbody component
+        startingPosition = transform.position; //starting position is current position of gameobject
     }
 
     private void Start()
@@ -29,12 +29,12 @@ public class Movement : MonoBehaviour
     public void ResetState()
     {
         //reset to their default values
-        this.speedMultiplier = 1.0f;
-        this.direction = this.initialDirection;
-        this.nextDirection = Vector2.zero;
-        this.transform.position = this.startingPosition;
-        this.rb.isKinematic = false;
-        this.enabled = true;
+        speedMultiplier = 1.0f;
+        direction = initialDirection;
+        nextDirection = Vector2.zero;
+        transform.position = startingPosition;
+        rb.isKinematic = false;
+        enabled = true;
     }
 
     private void Update()
@@ -69,13 +69,13 @@ public class Movement : MonoBehaviour
     public bool Occupied(Vector2 direction)
     {
         // If no collider is hit then there is no obstacle in that direction
-        RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.75f, 0.0f, direction, 1.5f, this.obstacleLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * 0.75f, 0.0f, direction, 1.5f, obstacleLayer);
         return hit.collider != null;
     }
 
     public void IncreaseSpeed() //increases speedMultiplier
     {
-        speedMultiplier = 1.5f;
+        speedMultiplier = 2.5f;
     }
 
 }

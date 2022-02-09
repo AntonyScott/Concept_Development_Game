@@ -12,73 +12,73 @@ public class EnemyFrightened : EnemyBehaviour
 
     public SpriteRenderer white;
 
-    public bool malfunction { get; private set; }
+    public bool malfunction;
 
     public override void Enable(float duration)
     {
         base.Enable(duration);
 
-        this.body.enabled = false;
-        this.eyes.enabled = false;
-        this.blue.enabled = true;
-        this.white.enabled = true;
+        body.enabled = false;
+        eyes.enabled = false;
+        blue.enabled = true;
+        white.enabled = true;
 
-        Invoke(nameof(Flash), duration / 2.0f);
+        Invoke(nameof(Flashing), duration / 2.0f);
     }
 
     public override void Disable()
     {
         base.Disable();
 
-        this.body.enabled = true;
-        this.eyes.enabled = true;
-        this.blue.enabled = false;
-        this.white.enabled = false;
+        body.enabled = true;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
     }
 
-    private void Flash()
+    private void Flashing()
     {
         if (!this.malfunction)
         {
-            this.blue.enabled = false;
-            this.white.enabled = true;
-            this.white.GetComponent<SpriteAnimation>().Restart();
+            blue.enabled = false;
+            white.enabled = true;
+            white.GetComponent<SpriteAnimation>().Restart();
         }
     }
 
     private void Malfunctioned()
     {
-        this.malfunction = true;
+        malfunction = true;
 
-        Vector3 position = this.enemy.home.insideTransform.position;
-        position.z = this.enemy.transform.position.z;
-        this.enemy.transform.position = position;
+        Vector3 position = enemy.home.insideTransform.position;
+        position.z = enemy.transform.position.z;
+        enemy.transform.position = position;
 
-        this.enemy.home.Enable(this.duration);
+        enemy.home.Enable(duration);
 
-        this.body.enabled = false;
-        this.eyes.enabled = true;
-        this.blue.enabled = false;
-        this.white.enabled = false;
+        body.enabled = false;
+        eyes.enabled = true;
+        blue.enabled = false;
+        white.enabled = false;
     }
 
     private void OnEnable()
     {
-        this.enemy.movement.speedMultiplier = 0.5f; //change to faster later
-        this.malfunction = false;
+        enemy.movement.speedMultiplier = 0.5f; //change to faster later
+        malfunction = false;
     }
 
     private void OnDisable()
     {
-        this.enemy.movement.speedMultiplier = 1.0f;
-        this.malfunction = false;
+        enemy.movement.speedMultiplier = 1.0f;
+        malfunction = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pacman"))
         {
-            if (this.enabled)
+            if (enabled)
             {
                 Malfunctioned();
             }
@@ -88,18 +88,16 @@ public class EnemyFrightened : EnemyBehaviour
     {
         Node node = other.GetComponent<Node>();
 
-        if (node != null && this.enabled)
+        if (node != null && enabled)
         {
             Vector2 direction = Vector2.zero;
             float maxDistance = float.MinValue;
 
-            // Find the available direction that moves farthest from pacman
+            // Finds the furthest direction from the player
             foreach (Vector2 possibleDirection in node.possibleDirections)
             {
-                // If the distance in this direction is greater than the current
-                // max distance then this direction becomes the new farthest
-                Vector3 newPosition = this.transform.position + new Vector3(possibleDirection.x, possibleDirection.y);
-                float distance = (this.enemy.target.position - newPosition).sqrMagnitude;
+                Vector3 newPosition = transform.position + new Vector3(possibleDirection.x, possibleDirection.y);
+                float distance = (enemy.target.position - newPosition).sqrMagnitude;
 
                 if (distance > maxDistance)
                 {
@@ -108,7 +106,7 @@ public class EnemyFrightened : EnemyBehaviour
                 }
             }
 
-            this.enemy.movement.SetDirection(direction);
+            enemy.movement.SetDirection(direction);
         }
     }
 

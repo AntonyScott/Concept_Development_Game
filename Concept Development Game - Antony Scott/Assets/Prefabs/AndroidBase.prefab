@@ -113,12 +113,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf19538a0825c446b459edd2334fc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 4
   speedMultiplier: 1
   initialDirection: {x: 0, y: 0}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 4096
+  rb: {fileID: 0}
+  direction: {x: 0, y: 0}
+  nextDirection: {x: 0, y: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1472354570320791139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8cb5b830030654fa603a6fedf83c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 20
+  duration: 12
 --- !u!114 &7917691609750904779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8c02aeb0ec57b4ba18b4cf515e0e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 8
+  duration: 3
 --- !u!114 &570733909369023703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,14 +373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 2867015756842785762, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
   - {fileID: 7468985002373224686, guid: 0bb174ca3304d1f4da4a30e8cd07dd51, type: 3}
-  animTime: 0.25
-  animFrame: 0
+  spriteRenderer: {fileID: 0}
+  animationTime: 0.25
+  animationFrame: 0
   loop: 1
 --- !u!1 &5049675631974613798
 GameObject:
@@ -474,12 +478,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 920572324899624016, guid: a89abea1783dc6b4cbcdeaefdbff0725, type: 3}
   - {fileID: 877657050626085837, guid: a89abea1783dc6b4cbcdeaefdbff0725, type: 3}
-  animTime: 0.25
-  animFrame: 0
+  spriteRenderer: {fileID: 0}
+  animationTime: 0.25
+  animationFrame: 0
   loop: 1
 --- !u!1 &8122254268925742513
 GameObject:
@@ -577,10 +581,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c116750f0083a94296d7eeb856dfa34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
   sprites:
   - {fileID: 4019137449540853610, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
   - {fileID: 1527972091469212671, guid: a96a8dbc16383a94ca35e555c0e485a6, type: 3}
-  animTime: 0.25
-  animFrame: 0
+  spriteRenderer: {fileID: 0}
+  animationTime: 0.25
+  animationFrame: 0
   loop: 1

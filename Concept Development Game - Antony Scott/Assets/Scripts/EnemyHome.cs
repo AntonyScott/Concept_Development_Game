@@ -14,35 +14,27 @@ public class EnemyHome : EnemyBehaviour
 
     private void OnDisable()
     {
-        if (this.gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
             StartCoroutine(EnemiesExit());
         }
     }
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(this.enabled && collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            this.enemy.movement.SetDirection(-this.enemy.movement.direction);
-        }
-    }*/
-
     private IEnumerator EnemiesExit()
     {
-        this.enemy.movement.SetDirection(Vector2.up, true);
-        this.enemy.movement.rb.isKinematic = true;
-        this.enemy.movement.enabled = false;
+        enemy.movement.SetDirection(Vector2.up, true);
+        enemy.movement.rb.isKinematic = true;
+        enemy.movement.enabled = false;
 
-        Vector3 position = this.transform.position;
+        Vector3 position = transform.position;
         float duration = 0.5f;
         float timeElapsed = 0.0f;
 
         while(timeElapsed < duration)
         {
-            Vector3 newPosition = Vector3.Lerp(position, this.insideTransform.position, timeElapsed / duration);
+            Vector3 newPosition = Vector3.Lerp(position, insideTransform.position, timeElapsed / duration);
             newPosition.z = position.z;
-            this.enemy.transform.position = newPosition;
+            enemy.transform.position = newPosition;
             timeElapsed += Time.deltaTime;
             yield return null;
         }
@@ -51,15 +43,15 @@ public class EnemyHome : EnemyBehaviour
 
         while (timeElapsed < duration)
         {
-            Vector3 newPosition = Vector3.Lerp(this.insideTransform.position, this.outsideTransform.position, timeElapsed / duration);
+            Vector3 newPosition = Vector3.Lerp(insideTransform.position, outsideTransform.position, timeElapsed / duration);
             newPosition.z = position.z;
             this.enemy.transform.position = newPosition;
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        this.enemy.movement.SetDirection(new Vector2(Random.value < 0.5f ? -1.0f : 1.0f, 0.0f), true);
-        this.enemy.movement.rb.isKinematic = false;
-        this.enemy.movement.enabled = true;
+        enemy.movement.SetDirection(new Vector2(Random.value < 0.5f ? -1.0f : 1.0f, 0.0f), true);
+        enemy.movement.rb.isKinematic = false;
+        enemy.movement.enabled = true;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Ghosts[] ghosts; //ghosts are set as an array
+    public Ghosts[] ghosts; //ghosts/androids are set as an array
 
     public Player pacman; //pacman declared as public game object
 
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (this.lives <= 0 && Input.GetKeyDown(KeyCode.Space)) //if lives are equal to or greater than 0 and player presses space
+        if (lives <= 0 && Input.GetKeyDown(KeyCode.Space)) //if lives are equal to or greater than 0 and player presses space
         {
             NewGame(); //new game is called which resets score and level
         }
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     }
     private void NewRound()
     {
-        foreach(Transform pellet in this.pellets) //turns on all pellets in game
+        foreach(Transform pellet in pellets) //turns on all pellets in game
         {
             pellet.gameObject.SetActive(true); //pellets are set to true
         }
@@ -50,20 +50,20 @@ public class GameManager : MonoBehaviour
     private void ResetState()
     {
         ResetEnemyMultiplier();
-        for (int i = 0; i < this.ghosts.Length; i++) //counts how many ghosts are present in level
+        for (int i = 0; i < ghosts.Length; i++) //counts how many ghosts are present in level
         {
-            this.ghosts[i].ResetState(); //turns on ghosts gameobject
+            ghosts[i].ResetState(); //turns on ghosts gameobject
             //this.ghosts[i].ResetState();
         }
-        this.pacman.ResetState(); //turns on pacman gameobject
+        pacman.ResetState(); //turns on pacman gameobject
     }
     private void GameOver()
     {
-        for (int i = 0; i < this.ghosts.Length; i++)
+        for (int i = 0; i < ghosts.Length; i++)
         {
-            this.ghosts[i].gameObject.SetActive(false); //deactivates all enemy gameobjects present in level
+            ghosts[i].gameObject.SetActive(false); //deactivates all enemy gameobjects present in level
         }
-        this.pacman.gameObject.SetActive(false); //turns off pacman gameobject in level
+        pacman.gameObject.SetActive(false); //turns off pacman gameobject in level
     }
     private void SetScore(int score) //score is set as an int
     {
@@ -77,18 +77,19 @@ public class GameManager : MonoBehaviour
 
     public void DestroyedEnemy(Ghosts enemy) 
     {
-        int points = enemy.points * this.enemyMultiplier;
-        SetScore(this.score + points);
-        this.enemyMultiplier++;
+        int points = enemy.points * enemyMultiplier;
+        SetScore(score + points);
+        enemyMultiplier++;
     }
 
     public void DestroyedPacMan()
     {
-        this.pacman.gameObject.SetActive(false); //turns off pacman gameobject
+        pacman.gameObject.SetActive(false); //turns off pacman gameobject
 
-        SetLives(this.lives - 1); //a life is deducted 
+        SetLives(lives - 1); //a life is deducted 
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
 
-        if(this.lives > 0) //if lives are greater than 0...
+        if(lives > 0) //if lives are greater than 0...
         {
             Invoke(nameof(ResetState), 3); //invoke resetstate function after 3 seconds
         }
@@ -100,11 +101,11 @@ public class GameManager : MonoBehaviour
     public void PelletEaten(Pellets pellet)
     {
         pellet.gameObject.SetActive(false); //pellets are deactivated when they collide with pacman
-        SetScore(this.score + pellet.points); //score increased for each pellet eaten
+        SetScore(score + pellet.points); //score increased for each pellet eaten
 
         if (!RemainingPellets()) //if no pellets remain
         {
-            this.pacman.gameObject.SetActive(false); //pacman is deactivated
+            pacman.gameObject.SetActive(false); //pacman is deactivated
             Invoke(nameof(NewRound), 3.0f); //new round begins after 3 seconds
         }
     }
@@ -112,11 +113,11 @@ public class GameManager : MonoBehaviour
     public void PowerPelletEaten(PowerPellet powerPellet)
     {
         // change enemy state
-        for (int i = 0; i < this.ghosts.Length; i++)
+        for (int i = 0; i < ghosts.Length; i++)
         {
-            this.ghosts[i].frightened.Enable(powerPellet.duration); //if power pellet is eaten then enemies become frightened
+            ghosts[i].frightened.Enable(powerPellet.duration); //if power pellet is eaten then enemies become frightened
         }
-
+        FindObjectOfType<AudioManager>().Play("PlayerPowerup");
         PelletEaten(powerPellet); //powerpellet added to score
         CancelInvoke(); //all invokes are cancelled
         Invoke(nameof(ResetEnemyMultiplier), powerPellet.duration); //invokes score multiplier for every enemy eaten during power pellet duration
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     private bool RemainingPellets()
     {
-        foreach(Transform pellets in this.pellets)
+        foreach(Transform pellets in pellets)
         {
             if (pellets.gameObject.activeSelf)
             {
@@ -137,6 +138,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetEnemyMultiplier()
     {
-        this.enemyMultiplier = 1; //enemy multiplier is reset to 1
+        enemyMultiplier = 1; //enemy multiplier is reset to 1
     }
 }
